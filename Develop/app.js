@@ -61,12 +61,7 @@ const enterEmployeeInfo = () => {
 }
   
 const addManager = commonAnswers => {
-    //ask manager related questions
-    // console.log(`Employee: ${answers.employee}`);
-    // console.log(`name: ${answers.name}`);
-    // console.log(`id: ${answers.id}`);
-    // console.log(`email: ${answers.email}`);
-
+    // Ask manager related questions:
     inquirer
         .prompt([
             {
@@ -86,37 +81,27 @@ const addManager = commonAnswers => {
 }
 
 const addEngineer = commonAnswers => {
-    //ask engineer related questions
-    // console.log(`Employee: ${answers.employee}`);
-    // console.log(`name: ${answers.name}`);
-    // console.log(`id: ${answers.id}`);
-    // console.log(`email: ${answers.email}`);
-
+    // Ask engineer related questions:
     inquirer
-    .prompt([
-        {
-            type: 'input',
-            name: 'github',
-            message: 'What is the Engineer\'s Github profile username?'
-        }
-      ])
-    .then(engineerAnswers => {
-        const { github } = engineerAnswers;
-        const { name, id, email } = commonAnswers;
-        const employee = new Engineer(name, id, email, github);
-        allEmployeesInfo.push(employee);
-        askForAnotherEntry();
-    });
+        .prompt([
+            {
+                type: 'input',
+                name: 'github',
+                message: 'What is the Engineer\'s Github profile username?'
+            }
+        ])
+        .then(engineerAnswers => {
+            const { github } = engineerAnswers;
+            const { name, id, email } = commonAnswers;
+            const employee = new Engineer(name, id, email, github);
+            allEmployeesInfo.push(employee);
+            askForAnotherEntry();
+        });
 
 }
 
 const addIntern = commonAnswers => {
-    //ask intern related questions
-    // console.log(`Employee: ${answers.employee}`);
-    // console.log(`name: ${answers.name}`);
-    // console.log(`id: ${answers.id}`);
-    // console.log(`email: ${answers.email}`);
-
+    // Ask intern related questions
     inquirer
     .prompt([
         {
@@ -137,27 +122,27 @@ const addIntern = commonAnswers => {
 
 const askForAnotherEntry = () => {
     inquirer
-    .prompt([
-        {
-            type: 'confirm',
-            name: 'new_entry',
-            message: 'Would you like to enter another employee?'
-        }
-      ])
-    .then(answer => {
-        if (answer.new_entry === true) {
-            enterEmployeeInfo();
-        }
-        else {
-            const html = render(allEmployeesInfo);
-            writeHTMLtoFile(html);
-        }
-    });
+        .prompt([
+            {
+                type: 'confirm',
+                name: 'new_entry',
+                message: 'Would you like to enter another employee?'
+            }
+        ])
+        .then(answer => {
+            if (answer.new_entry === true) {
+                enterEmployeeInfo();
+            }
+            else {
+                const html = render(allEmployeesInfo);
+                writeHTMLtoFile(html);
+            }
+        });
 }
 
 const writeHTMLtoFile = (html) => {
 
-    fs.writeFile("output/team.html", html, function(err) {
+    fs.writeFile(outputPath, html, function(err) {
 
         if (err) {
           return console.log(err);
