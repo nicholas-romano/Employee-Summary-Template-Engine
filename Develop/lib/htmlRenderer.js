@@ -10,22 +10,20 @@ const render = employees => {
   html.push(employees
     .filter(employee => employee.getRole() === "Manager")
     .map(manager => renderManager(manager))
-    .join("")
+    .join("\r\n")
   );
   html.push(employees
     .filter(employee => employee.getRole() === "Engineer")
     .map(engineer => renderEngineer(engineer))
-    .join("")
+    .join("\r\n")
   );
   html.push(employees
     .filter(employee => employee.getRole() === "Intern")
     .map(intern => renderIntern(intern))
-    .join("")
+    .join("\r\n")
   );
 
-  console.log(html);
-
-  return renderMain(html.join(""));
+  return renderMain(html.join("\r\n"));
 
 };
 
