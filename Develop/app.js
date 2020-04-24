@@ -70,8 +70,8 @@ const addManager = commonAnswers => {
                 message: 'What is the Manager\'s office number?'
             }
         ])
-        .then(internAnswers => {
-            const { officeNumber } = internAnswers;
+        .then(managerAnswers => {
+            const { officeNumber } = managerAnswers;
             const { name, id, email } = commonAnswers;
             const employee = new Manager(name, id, email, officeNumber);
             allEmployeesInfo.push(employee);
