@@ -13,10 +13,7 @@ const render = require("./lib/htmlRenderer");
 let allEmployeesInfo = [];
 
 const enterEmployeeInfo = () => {
-
-    //console.log(JSON.stringify(allEmployeesInfo, null, '  '));
-    // Write code to use inquirer to gather information about the development team members,
-    // and to create objects for each team member (using the correct classes as blueprints!)
+    //Ask Common Questions:
     inquirer
         .prompt([
             {
@@ -46,77 +43,56 @@ const enterEmployeeInfo = () => {
             },
         ])
         .then(commonAnswers => {
-        switch(commonAnswers.role) {
+            const { role } = commonAnswers;
+        switch(role) {
             case 'Manager':
-                addManager(commonAnswers);
+                additionalQuestions(role, "officeNumber", "What is the Manager's office number?", commonAnswers);
             break;
             case 'Engineer':
-                addEngineer(commonAnswers);
+                additionalQuestions(role, "github", "What is the Engineer's Github profile username?", commonAnswers);
             break;
             case 'Intern':
-                addIntern(commonAnswers);
+                additionalQuestions(role, "school", "Where does the Intern go to school?", commonAnswers);
             break;
         }
     });
 }
   
-const addManager = commonAnswers => {
-    // Ask manager related questions:
+const additionalQuestions = (role, inputType, messageText, commonAnswers) => {
+    // Ask additional questions:
     inquirer
         .prompt([
             {
                 type: 'input',
-                name: 'officeNumber',
-                message: 'What is the Manager\'s office number?'
+                name: inputType,
+                message: messageText
             }
         ])
-        .then(managerAnswers => {
-            const { officeNumber } = managerAnswers;
+        .then(answers => {
+
+            let answer;
+
+            for (let key in answers) {
+                answer = answers[key];
+            }
+
             const { name, id, email } = commonAnswers;
-            const employee = new Manager(name, id, email, officeNumber);
+            let employee;
+            
+            switch(role) {
+                case 'Manager':
+                    employee = new Manager(name, id, email, answer);
+                break;
+                case 'Engineer':
+                    employee = new Engineer(name, id, email, answer);
+                break;
+                case 'Intern':
+                    employee = new Intern(name, id, email, answer);
+                break;
+            }
             allEmployeesInfo.push(employee);
             askForAnotherEntry();
         });
-    
-}
-
-const addEngineer = commonAnswers => {
-    // Ask engineer related questions:
-    inquirer
-        .prompt([
-            {
-                type: 'input',
-                name: 'github',
-                message: 'What is the Engineer\'s Github profile username?'
-            }
-        ])
-        .then(engineerAnswers => {
-            const { github } = engineerAnswers;
-            const { name, id, email } = commonAnswers;
-            const employee = new Engineer(name, id, email, github);
-            allEmployeesInfo.push(employee);
-            askForAnotherEntry();
-        });
-
-}
-
-const addIntern = commonAnswers => {
-    // Ask intern related questions
-    inquirer
-    .prompt([
-        {
-            type: 'input',
-            name: 'school',
-            message: 'Where does the Intern go to school?'
-        }
-      ])
-    .then(internAnswers => {
-        const { school } = internAnswers;
-        const { name, id, email } = commonAnswers;
-        const employee = new Intern(name, id, email, school);
-        allEmployeesInfo.push(employee);
-        askForAnotherEntry();
-    });
 
 }
 
@@ -155,23 +131,3 @@ const writeHTMLtoFile = (html) => {
 };
 
 enterEmployeeInfo();
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above to target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```

@@ -23,7 +23,7 @@ const render = employees => {
     .join("\r\n")
   );
 
-  return renderMain(html.join("\r\n"));
+  return renderMain(html.join("\r\n").trim());
 
 };
 
