@@ -1,4 +1,4 @@
-# Employee-Summary-Template-Engine &middot; ![node](https://img.shields.io/badge/node-12.16.2-blue) ![npm](https://img.shields.io/badge/npm-6.14.4-blue) ![inquirer](https://img.shields.io/badge/inquirer-7.1.0-blue) 
+# Employee Summary Template Engine &middot; ![node](https://img.shields.io/badge/node-12.16.2-blue) ![npm](https://img.shields.io/badge/npm-6.14.4-blue) ![inquirer](https://img.shields.io/badge/inquirer-7.1.0-blue) 
 
 ![Employee-Summary-Template-Engine](/Develop/images/My-Team-Sample-HTML.png) 
 
