@@ -8,14 +8,13 @@ This application uses NodeJS in the command line (PC) or terminal (Mac) to promp
 ## Table of Contents 
 * [Installation](#installation) 
 * [Usage](#usage) 
-* [Credits](#credits) 
 * [License](#license) 
 * [Questions](#questions) 
  
 ## Installation 
 1.  Open terminal/command line  
 2.  Run node install  
-3.  Run npm i inquirer  
+3.  npm i inquirer  
  
 ## Usage 
 1.  Open your terminal/command line and navigate to your project/Develop folder  
@@ -25,8 +24,6 @@ This application uses NodeJS in the command line (PC) or terminal (Mac) to promp
 ## License 
 There is not a license for this application. 
 
-## Contributing 
-Nick Romano [github.com/nicholas-romano](https://github.com/nicholas-romano) 
 ## Questions 
 ![GitHub Profile Image](https://avatars.githubusercontent.com/u/6642173?) 
 
