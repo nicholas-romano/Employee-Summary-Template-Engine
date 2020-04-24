@@ -14,7 +14,7 @@ let allEmployeesInfo = [];
 
 const enterEmployeeInfo = () => {
 
-    console.log(JSON.stringify(allEmployeesInfo, null, '  '));
+    //console.log(JSON.stringify(allEmployeesInfo, null, '  '));
     // Write code to use inquirer to gather information about the development team members,
     // and to create objects for each team member (using the correct classes as blueprints!)
     inquirer
