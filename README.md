@@ -8,6 +8,7 @@ This application uses NodeJS in the command line (PC) or terminal (Mac) to promp
 ## Table of Contents 
 * [Installation](#installation) 
 * [Usage](#usage) 
+* [Third Party Contributors](#third-party-contributors) 
 * [License](#license) 
 * [Questions](#questions) 
  
@@ -19,7 +20,10 @@ This application uses NodeJS in the command line (PC) or terminal (Mac) to promp
 ## Usage 
 1.  Open your terminal/command line and navigate to your project/Develop folder  
 2.  Run node app.js to start the application  
-3.  Answer the question prompts. (Use the up/down arrows on your keyboard to select an employee type). ![employee-choices](/Develop/images/employee-choices.png) 
+3.  Answer the question prompts. (Use the up/down arrows on your keyboard to select an employee type). ![employee-choices](/Develop/images/employee-choices.png)
+
+## Third Party Contributors 
+Styling and layout was provided by the University of North Carolina Code Bootcamp. JavaScript code was created by Nick Romano.
  
 ## License 
 There is not a license for this application. 
